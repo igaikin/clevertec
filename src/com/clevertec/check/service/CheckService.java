@@ -24,10 +24,6 @@ public class CheckService {
         return check;
     }
 
-    private static void log(String message) {
-        System.out.println("[LOGGER: CheckService] " + message);
-    }
-
     private static boolean isApplyPromoDiscount(Map<Product, Integer> cart) {
         int numberOfPromoProducts = 0;
         for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
