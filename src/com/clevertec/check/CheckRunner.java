@@ -36,10 +36,8 @@ public class CheckRunner {
             String checkContent = FormatterUtil.getFormattedCheck(check);
             if (WRITE_FILE) {
                 FileUtil.writeFile(FormatterUtil.getFormattedCheck(check), OUT);
-                System.out.println(checkContent);
-            } else {
-                System.out.println(checkContent);
             }
+            System.out.println(checkContent);
         } catch (CheckException e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {
