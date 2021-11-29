@@ -52,9 +52,9 @@ public class CheckRunner {
         WRITE_FILE = Boolean.parseBoolean(properties.getProperty("write_file"));
         IN = properties.getProperty("input_file");
         OUT = properties.getProperty("output_file");
-        System.out.println(READ_FILE);
-        System.out.println(WRITE_FILE);
-        System.out.println(IN);
-        System.out.println(OUT);
+        System.out.println("Read file - " + READ_FILE);
+        System.out.println("Write file - " + WRITE_FILE);
+        System.out.println("From - " + IN);
+        System.out.println("To - " + OUT);
     }
 }
