@@ -33,7 +33,6 @@ public class ReaderUtil {
         return data;
     }
 
-
     private static int getQuantity(String arg) {
         try {
             String quantityStr = arg.substring(arg.indexOf('-') + 1);

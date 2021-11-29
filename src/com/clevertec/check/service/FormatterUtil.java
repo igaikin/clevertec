@@ -11,10 +11,6 @@ public class FormatterUtil {
     public static final String LINE_SEPARATOR =
             String.format("+-----+--------------------------------------------+----------+----------+%n");
 
-    private static void log(String message) {
-        System.out.println("[LOGGER: CheckService] " + message);
-    }
-
     public static String getFormattedCheck(Check check) {
         StringBuilder output = new StringBuilder();
         output.append(getHeaderLine()).append(LINE_SEPARATOR);
@@ -47,8 +43,6 @@ public class FormatterUtil {
         String cost = getFormattedMoney(line.getFullCost());
         String totalCost = getFormattedMoney(line.getTotal());
         String promoCost = getFormattedMoney(line.getPromoCost());
-        log("Product: " + line.getDescription() + "\t| Global promo: " + check.isOnPromo() + " | Line promo: "
-                + line.getPromo());
         if (check.isOnPromo() && line.getPromo()) {
             return String.format("|%4d | %-43s|%9s |          |%n"
                             + "|     | PROMO PRODUCT Discount %.0f%%                 |%9s |%9s |%n"

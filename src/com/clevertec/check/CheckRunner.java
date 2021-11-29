@@ -58,5 +58,3 @@ public class CheckRunner {
         System.out.println(OUT);
     }
 }
-
-
