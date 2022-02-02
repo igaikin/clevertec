@@ -6,6 +6,13 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-out/*
 /.idea/sonarlint/*
-resources/out/*
+/resources/out/*
+/out/*
+/.idea/*
+/target/*
+/logs
+*.log
+*.gz
+*.jar
+*.war
