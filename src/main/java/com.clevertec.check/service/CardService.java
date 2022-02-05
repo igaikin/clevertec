@@ -3,7 +3,7 @@ package com.clevertec.check.service;
 import com.clevertec.check.bean.Card;
 import com.clevertec.check.dao.CardDao;
 import com.clevertec.check.dao.impl.CardDaoFileImpl;
-import com.clevertec.check.service.exception.CheckException;
+import com.clevertec.check.exception.CheckException;
 
 import java.util.Optional;
 

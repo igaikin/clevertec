@@ -1,6 +1,6 @@
 package com.clevertec.check;
 
-import com.clevertec.check.IO.FileUtil;
+import com.clevertec.check.util.FileUtil;
 import com.clevertec.check.bean.Check;
 import com.clevertec.check.bean.Product;
 import com.clevertec.check.service.CardService;
@@ -8,7 +8,7 @@ import com.clevertec.check.service.CartService;
 import com.clevertec.check.service.CheckService;
 import com.clevertec.check.service.FormatterUtil;
 import com.clevertec.check.service.ReaderUtil;
-import com.clevertec.check.service.exception.CheckException;
+import com.clevertec.check.exception.CheckException;
 
 import java.io.FileReader;
 import java.io.IOException;

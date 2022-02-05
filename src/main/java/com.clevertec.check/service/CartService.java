@@ -3,7 +3,7 @@ package com.clevertec.check.service;
 import com.clevertec.check.bean.Product;
 import com.clevertec.check.dao.ProductDao;
 import com.clevertec.check.dao.impl.ProductDaoFileImpl;
-import com.clevertec.check.service.exception.CheckException;
+import com.clevertec.check.exception.CheckException;
 
 import java.util.HashMap;
 import java.util.Map;
