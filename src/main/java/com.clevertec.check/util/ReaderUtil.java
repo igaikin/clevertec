@@ -1,4 +1,4 @@
-package com.clevertec.check.service;
+package com.clevertec.check.util;
 
 import com.clevertec.check.exception.CheckException;
 
