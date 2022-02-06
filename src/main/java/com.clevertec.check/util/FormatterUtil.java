@@ -43,7 +43,7 @@ public class FormatterUtil {
         String cost = getFormattedMoney(line.getFullCost());
         String totalCost = getFormattedMoney(line.getTotal());
         String promoCost = getFormattedMoney(line.getPromoCost());
-        if (check.isOnPromo() && line.getPromo()) {
+        if (check.isOnPromo() && line.isPromo()) {
             return String.format("|%4d | %-43s|%9s |          |%n"
                             + "|     | PROMO PRODUCT Discount %.0f%%                 |%9s |%9s |%n"
                             + LINE_SEPARATOR,

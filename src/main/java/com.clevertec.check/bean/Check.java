@@ -91,7 +91,7 @@ public class Check {
             this.fullCost = fullCost;
         }
 
-        public boolean getPromo() {
+        public boolean isPromo() {
             return promo;
         }
 
