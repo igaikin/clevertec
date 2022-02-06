@@ -6,8 +6,8 @@ import com.clevertec.check.bean.Product;
 import com.clevertec.check.service.CardService;
 import com.clevertec.check.service.CartService;
 import com.clevertec.check.service.CheckService;
-import com.clevertec.check.service.FormatterUtil;
-import com.clevertec.check.service.ReaderUtil;
+import com.clevertec.check.util.FormatterUtil;
+import com.clevertec.check.util.ReaderUtil;
 import com.clevertec.check.exception.CheckException;
 
 import java.io.FileReader;
@@ -47,7 +47,7 @@ public class CheckRunner {
 
     private static void init() throws IOException {
         Properties properties = new Properties();
-        properties.load(new FileReader("config.properties"));
+        properties.load(new FileReader("src/main/resources/config.properties"));
         READ_FILE = Boolean.parseBoolean(properties.getProperty("read_file"));
         WRITE_FILE = Boolean.parseBoolean(properties.getProperty("write_file"));
         IN = properties.getProperty("input_file");
