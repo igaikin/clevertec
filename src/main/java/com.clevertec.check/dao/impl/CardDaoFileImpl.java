@@ -18,7 +18,7 @@ public class CardDaoFileImpl implements CardDao {
 
     static {
         try {
-            Files.lines(Paths.get("resources/in/cards.txt")).forEach(line -> {
+            Files.lines(Paths.get("src/main/resources/in/cards.txt")).forEach(line -> {
                 String[] arr = line.split(", ");
                 long id = Long.parseLong(arr[0]);
                 BigDecimal discount = BigDecimal.valueOf(Double.parseDouble(arr[1]));

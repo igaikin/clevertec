@@ -16,7 +16,7 @@ public class ProductDaoFileImpl implements ProductDao {
 
     static {
         try {
-            Files.lines(Paths.get("resources/in/products.txt")).forEach(line -> {
+            Files.lines(Paths.get("src/main/resources/in/products.txt")).forEach(line -> {
                 String[] arr = line.split(", ");
                 long id = Long.parseLong(arr[0]);
                 String description = arr[1];
