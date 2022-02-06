@@ -67,10 +67,6 @@ public class Check {
             this.promoCost = promoCost;
         }
 
-        public boolean isPromo() {
-            return promo;
-        }
-
         public int getQuantity() {
             return quantity;
         }
