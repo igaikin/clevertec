@@ -51,7 +51,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Optional<Product> get(long id) {
+    public Optional<Product> get(Long id) {
         return Optional.of(PRODUCTS.get(id));
     }
 
