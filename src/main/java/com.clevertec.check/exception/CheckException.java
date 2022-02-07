@@ -5,4 +5,3 @@ public class CheckException extends RuntimeException {
         super(message);
     }
 }
-
