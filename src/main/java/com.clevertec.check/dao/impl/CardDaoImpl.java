@@ -17,7 +17,7 @@ public class CardDaoImpl implements CardDao {
         CARDS.put(3333L, new Card(3333, BigDecimal.valueOf(7.0)));
     }
 
-    public Optional<Card> getById(long id) {
+    public Optional<Card> get(long id) {
         return Optional.of(CARDS.get(id));
     }
 }

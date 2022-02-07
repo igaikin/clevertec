@@ -17,7 +17,7 @@ public class CartService {
         for (Map.Entry<Long, Integer> entry : data.entrySet()) {
             long id = entry.getKey();
             int quantity = entry.getValue();
-            Optional<Product> optionalProduct = productDao.getById(id);
+            Optional<Product> optionalProduct = productDao.get(id);
             Product product = optionalProduct.orElseThrow(() -> new CheckException("No product with id: " + id));
             cart.put(product, quantity);
         }

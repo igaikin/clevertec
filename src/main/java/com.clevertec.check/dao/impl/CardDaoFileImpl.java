@@ -29,7 +29,7 @@ public class CardDaoFileImpl implements CardDao {
     }
 
     @Override
-    public Optional<Card> getById(long id) {
+    public Optional<Card> get(long id) {
         return Optional.of(CARDS.get(id));
     }
 }

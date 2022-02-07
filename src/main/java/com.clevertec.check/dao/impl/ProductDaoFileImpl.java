@@ -30,7 +30,7 @@ public class ProductDaoFileImpl implements ProductDao {
     }
 
     @Override
-    public Optional<Product> getById(long id) {
+    public Optional<Product> get(long id) {
         return Optional.of(PRODUCTS.get(id));
     }
 }

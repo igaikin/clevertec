@@ -5,5 +5,5 @@ import com.clevertec.check.bean.Card;
 import java.util.Optional;
 
 public interface CardDao {
-    Optional<Card> getById(long id);
+    Optional<Card> get(long id);
 }

@@ -5,5 +5,5 @@ import com.clevertec.check.bean.Product;
 import java.util.Optional;
 
 public interface ProductDao {
-    Optional<Product> getById(long id);
+    Optional<Product> get(long id);
 }

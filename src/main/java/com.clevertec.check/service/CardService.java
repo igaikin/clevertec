@@ -11,7 +11,7 @@ public class CardService {
     private static final CardDao cardDao = new CardDaoFileImpl();
 
     public static Card getCard(long id) throws RuntimeException {
-        Optional<Card> optionalCard = cardDao.getById(id);
+        Optional<Card> optionalCard = cardDao.get(id);
         return optionalCard.orElseThrow(() -> new CheckException("No card with id: " + id));
     }
 }

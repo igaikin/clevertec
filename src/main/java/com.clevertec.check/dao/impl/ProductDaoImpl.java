@@ -35,7 +35,7 @@ public class ProductDaoImpl implements ProductDao {
         PRODUCTS.put(21L, new Product(21, "Tea", BigDecimal.valueOf(2.99), false));
     }
 
-    public Optional<Product> getById(long id) {
+    public Optional<Product> get(long id) {
         return Optional.of(PRODUCTS.get(id));
     }
 }
