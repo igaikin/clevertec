@@ -1,29 +1,13 @@
 package com.clevertec.check.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.math.BigDecimal;
 
+@Data
+@AllArgsConstructor
 public class Card {
     private long id;
     private BigDecimal discount;
-
-    public Card(long id, BigDecimal discount) {
-        this.id = id;
-        this.discount = discount;
-    }
-
-    public BigDecimal getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(BigDecimal discount) {
-        this.discount = discount;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 }
