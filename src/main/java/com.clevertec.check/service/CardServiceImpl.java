@@ -7,7 +7,7 @@ import com.clevertec.check.exception.CheckException;
 
 import java.util.Optional;
 
-public class CardService {
+public class CardServiceImpl {
     private static final CardDao cardDao = new CardDaoFileImpl();
 
     public static Card getCard(long id) throws RuntimeException {
