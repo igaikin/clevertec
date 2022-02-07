@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,7 +30,27 @@ public class CardDaoFileImpl implements CardDao {
     }
 
     @Override
-    public Optional<Card> get(long id) {
+    public Card create(Card card) {
+        return null;
+    }
+
+    @Override
+    public List<Card> getAll(Card card) {
+        return null;
+    }
+
+    @Override
+    public Optional<Card> get(Long id) {
         return Optional.of(CARDS.get(id));
+    }
+
+    @Override
+    public Card update(Card card) {
+        return null;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        return false;
     }
 }
