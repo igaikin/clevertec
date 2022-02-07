@@ -16,7 +16,6 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public Card create(Card card) {
-
         Optional<Card> existing = cardDao.get(card.getId());
         if (existing != null) {
             throw new CardCreateException("Card with id: " + card.getId() + " already exists!");
