@@ -53,8 +53,8 @@ public class CheckRunner {
         IN = properties.getProperty("input_file");
         OUT = properties.getProperty("output_file");
         System.out.println("Read file - " + READ_FILE);
-        System.out.println("Write file - " + WRITE_FILE);
         System.out.println("From - " + IN);
+        System.out.println("Write file - " + WRITE_FILE);
         System.out.println("To - " + OUT);
     }
 }
