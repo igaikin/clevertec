@@ -4,7 +4,9 @@ import com.clevertec.check.bean.Product;
 import com.clevertec.check.dao.ProductDao;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 public class ProductDaoImpl implements ProductDao {
@@ -35,7 +37,36 @@ public class ProductDaoImpl implements ProductDao {
         PRODUCTS.put(21L, new Product(21, "Tea", BigDecimal.valueOf(2.99), false));
     }
 
+    @Override
+    public Product create(Product product) {
+        PRODUCTS.put(product.getId(), product);
+        return product;
+    }
+
+    @Override
+    public List<Product> getAll(Product product) {
+        List<Product> products = new ArrayList<>();
+        products.add(product);
+        return products;
+    }
+
+    @Override
     public Optional<Product> get(long id) {
         return Optional.of(PRODUCTS.get(id));
+    }
+
+    @Override
+    public Product update(Product product) {
+        Product updateProduct = PRODUCTS.get(product.getId());
+        updateProduct.setDescription(product.getDescription());
+        updateProduct.setCost(product.getCost());
+        updateProduct.setOnPromo(product.isOnPromo());
+        return updateProduct;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        PRODUCTS.remove(id);
+        return true;
     }
 }
