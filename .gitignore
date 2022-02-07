@@ -7,7 +7,7 @@
 /dataSources/
 /dataSources.local.xml
 /.idea/sonarlint/*
-/resources/out/*
+src/main/resources/out/*
 /out/*
 /.idea/*
 /target/*
