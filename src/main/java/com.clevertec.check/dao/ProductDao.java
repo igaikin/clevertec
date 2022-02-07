@@ -7,8 +7,12 @@ import java.util.Optional;
 
 public interface ProductDao {
     Product create(Product product);
+
     List<Product> getAll(Product product);
+
     Optional<Product> get(long id);
+
     Product update(Product product);
+
     boolean delete(Long id);
 }
