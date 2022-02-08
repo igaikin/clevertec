@@ -1,4 +1,4 @@
-package com.clevertec.check.bean;
+package com.clevertec_check.bean;
 
 import lombok.Data;
 

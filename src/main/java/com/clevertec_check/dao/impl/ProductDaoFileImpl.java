@@ -1,7 +1,7 @@
-package com.clevertec.check.dao.impl;
+package com.clevertec_check.dao.impl;
 
-import com.clevertec.check.bean.Product;
-import com.clevertec.check.dao.ProductDao;
+import com.clevertec_check.bean.Product;
+import com.clevertec_check.dao.ProductDao;
 
 import java.io.IOException;
 import java.math.BigDecimal;

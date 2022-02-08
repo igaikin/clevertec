@@ -1,4 +1,4 @@
-package com.clevertec.check.exception;
+package com.clevertec_check.exception;
 
 public class CardCreateException extends RuntimeException {
     public CardCreateException(String message) {

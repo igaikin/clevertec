@@ -1,4 +1,4 @@
-package com.clevertec.check.util;
+package com.clevertec_check.util;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

@@ -1,6 +1,6 @@
-package com.clevertec.check.service;
+package com.clevertec_check.service;
 
-import com.clevertec.check.bean.Card;
+import com.clevertec_check.bean.Card;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.clevertec.check.dao.impl;
+package com.clevertec_check.dao.impl;
 
-import com.clevertec.check.bean.Card;
-import com.clevertec.check.dao.CardDao;
+import com.clevertec_check.bean.Card;
+import com.clevertec_check.dao.CardDao;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

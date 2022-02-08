@@ -1,6 +1,6 @@
-package com.clevertec.check.util;
+package com.clevertec_check.util;
 
-import com.clevertec.check.bean.Check;
+import com.clevertec_check.bean.Check;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

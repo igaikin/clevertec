@@ -1,4 +1,4 @@
-package com.clevertec.check.dao;
+package com.clevertec_check.dao;
 
 import java.util.List;
 import java.util.Optional;

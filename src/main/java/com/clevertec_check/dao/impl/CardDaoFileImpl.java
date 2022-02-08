@@ -1,7 +1,7 @@
-package com.clevertec.check.dao.impl;
+package com.clevertec_check.dao.impl;
 
-import com.clevertec.check.bean.Card;
-import com.clevertec.check.dao.CardDao;
+import com.clevertec_check.bean.Card;
+import com.clevertec_check.dao.CardDao;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -26,7 +26,6 @@ public class CardDaoFileImpl implements CardDao {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

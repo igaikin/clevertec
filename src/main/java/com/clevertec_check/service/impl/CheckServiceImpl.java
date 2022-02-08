@@ -1,8 +1,8 @@
-package com.clevertec.check.service;
+package com.clevertec_check.service.impl;
 
-import com.clevertec.check.bean.Card;
-import com.clevertec.check.bean.Check;
-import com.clevertec.check.bean.Product;
+import com.clevertec_check.bean.Card;
+import com.clevertec_check.bean.Check;
+import com.clevertec_check.bean.Product;
 
 import java.math.BigDecimal;
 import java.util.Map;

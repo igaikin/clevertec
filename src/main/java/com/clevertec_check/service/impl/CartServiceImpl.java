@@ -1,10 +1,10 @@
-package com.clevertec.check.service.impl;
+package com.clevertec_check.service.impl;
 
-import com.clevertec.check.bean.Product;
-import com.clevertec.check.dao.ProductDao;
-import com.clevertec.check.dao.impl.ProductDaoFileImpl;
-import com.clevertec.check.exception.CheckException;
-import com.clevertec.check.service.CartService;
+import com.clevertec_check.bean.Product;
+import com.clevertec_check.dao.ProductDao;
+import com.clevertec_check.dao.impl.ProductDaoFileImpl;
+import com.clevertec_check.exception.CheckException;
+import com.clevertec_check.service.CartService;
 
 import java.util.HashMap;
 import java.util.Map;

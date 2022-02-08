@@ -1,6 +1,6 @@
-package com.clevertec.check.util;
+package com.clevertec_check.util;
 
-import com.clevertec.check.exception.CheckException;
+import com.clevertec_check.exception.CheckException;
 
 import java.util.HashMap;
 import java.util.Map;
