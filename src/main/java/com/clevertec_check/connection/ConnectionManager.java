@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static com.clevertec_check.log4j2.LOG;
+import static com.clevertec_check.Log4j2.LOG;
 
 public class ConnectionManager {
     private static final String URL = "jdbc:postgresql://127.0.0.1:5432/checkRunner";

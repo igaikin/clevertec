@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 
-import static com.clevertec_check.log4j2.LOG;
+import static com.clevertec_check.Log4j2.LOG;
 
 public class CheckRunner {
 
