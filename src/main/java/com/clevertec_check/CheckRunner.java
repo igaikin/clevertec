@@ -2,6 +2,7 @@ package com.clevertec_check;
 
 import com.clevertec_check.bean.Check;
 import com.clevertec_check.bean.Product;
+import com.clevertec_check.connection.ConnectionManager;
 import com.clevertec_check.exception.CheckException;
 import com.clevertec_check.service.CardService;
 import com.clevertec_check.service.CartService;
@@ -19,6 +20,7 @@ import java.util.Optional;
 import java.util.Properties;
 
 public class CheckRunner {
+
     private static String IN;
     private static String OUT;
     private static boolean READ_FILE;
@@ -47,6 +49,8 @@ public class CheckRunner {
             System.err.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            ConnectionManager.getInstance().tearDown();
         }
     }
 

@@ -2,7 +2,7 @@ package com.clevertec_check.service.impl;
 
 import com.clevertec_check.bean.Product;
 import com.clevertec_check.dao.ProductDao;
-import com.clevertec_check.dao.impl.ProductDaoFileImpl;
+import com.clevertec_check.dao.impl.ProductDaoJdbcImpl;
 import com.clevertec_check.exception.CheckException;
 import com.clevertec_check.service.CartService;
 
@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class CartServiceImpl implements CartService {
-    private static final ProductDao productDao = new ProductDaoFileImpl();
+    private static final ProductDao productDao = new ProductDaoJdbcImpl();
 
     public Map<Product, Integer> getCart(Map<Long, Integer> data) {
         Map<Product, Integer> cart = new HashMap<>();
