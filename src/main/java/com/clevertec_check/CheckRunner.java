@@ -6,6 +6,7 @@ import com.clevertec_check.connection.ConnectionManager;
 import com.clevertec_check.exception.CheckException;
 import com.clevertec_check.service.CardService;
 import com.clevertec_check.service.CartService;
+import com.clevertec_check.service.CheckService;
 import com.clevertec_check.service.impl.CardServiceImpl;
 import com.clevertec_check.service.impl.CartServiceImpl;
 import com.clevertec_check.service.impl.CheckServiceImpl;
@@ -29,7 +30,7 @@ public class CheckRunner {
     private static boolean WRITE_FILE;
     private static final CardService cardService = new CardServiceImpl();
     private static final CartService cartService = new CartServiceImpl();
-
+    private static final CheckService checkService = new CheckServiceImpl();
     public static void main(String[] args) {
         try {
             init();
@@ -39,9 +40,8 @@ public class CheckRunner {
             ReaderUtil.validate(args);
             Map<Product, Integer> cart = cartService.getCart(ReaderUtil.getData(args));
             Optional<Long> cardId = ReaderUtil.getCardId(args);
-            CheckServiceImpl checkServiceImpl = new CheckServiceImpl();
-            Check check = cardId.map(id -> checkServiceImpl.createCheck(cart, cardService.get(id)))
-                    .orElseGet(() -> checkServiceImpl.createCheck(cart));
+            Check check = cardId.map(id -> checkService.createCheck(cart, cardService.get(id)))
+                    .orElseGet(() -> checkService.createCheck(cart));
             String checkContent = FormatterUtil.getFormattedCheck(check);
             if (WRITE_FILE) {
                 FileUtil.writeFile(FormatterUtil.getFormattedCheck(check), OUT);

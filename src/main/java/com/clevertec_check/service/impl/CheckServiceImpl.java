@@ -3,11 +3,12 @@ package com.clevertec_check.service.impl;
 import com.clevertec_check.bean.Card;
 import com.clevertec_check.bean.Check;
 import com.clevertec_check.bean.Product;
+import com.clevertec_check.service.CheckService;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class CheckServiceImpl {
+public class CheckServiceImpl implements CheckService {
 
     private static final int REQUIRED_NUMBER_OF_PROMO_PRODUCT = 5;
     private static final BigDecimal PROMO_DISCOUNT = BigDecimal.TEN;
@@ -49,7 +50,7 @@ public class CheckServiceImpl {
         return check;
     }
 
-    private static Check.Line getProductLine(Map.Entry<Product, Integer> entry, boolean countPromo) {
+    private Check.Line getProductLine(Map.Entry<Product, Integer> entry, boolean countPromo) {
         BigDecimal total = entry.getKey().getCost().multiply(BigDecimal.valueOf(entry.getValue()));
         Check.Line line = new Check.Line(entry.getValue(), entry.getKey(), total, entry.getKey().isOnPromo());
         if (countPromo && entry.getKey().isOnPromo()) {
