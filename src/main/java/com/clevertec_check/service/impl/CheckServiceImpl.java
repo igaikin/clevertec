@@ -7,13 +7,13 @@ import com.clevertec_check.bean.Product;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class CheckService {
+public class CheckServiceImpl {
 
     private static final int REQUIRED_NUMBER_OF_PROMO_PRODUCT = 5;
     private static final BigDecimal PROMO_DISCOUNT = BigDecimal.TEN;
     private static BigDecimal totalPromoDiscount = BigDecimal.ZERO;
 
-    private static Check createCheckBase(Map<Product, Integer> cart) {
+    private Check createCheckBase(Map<Product, Integer> cart) {
         Check check = new Check();
         boolean countPromo = isApplyPromoDiscount(cart);
         check.setOnPromo(countPromo);
@@ -24,7 +24,7 @@ public class CheckService {
         return check;
     }
 
-    private static boolean isApplyPromoDiscount(Map<Product, Integer> cart) {
+    private boolean isApplyPromoDiscount(Map<Product, Integer> cart) {
         int numberOfPromoProducts = 0;
         for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
             if (entry.getKey().isOnPromo()) {
@@ -37,13 +37,13 @@ public class CheckService {
         return false;
     }
 
-    public static Check createCheck(Map<Product, Integer> cart, Card card) {
+    public Check createCheck(Map<Product, Integer> cart, Card card) {
         Check check = createCheckBase(cart);
         check.setTotalLine(getTotalLine(cart, card.getDiscount()));
         return check;
     }
 
-    public static Check createCheck(Map<Product, Integer> cart) {
+    public Check createCheck(Map<Product, Integer> cart) {
         Check check = createCheckBase(cart);
         check.setTotalLine(getTotalLine(cart));
         return check;
@@ -66,11 +66,11 @@ public class CheckService {
         return line;
     }
 
-    private static Check.TotalLine getTotalLine(Map<Product, Integer> cart) {
+    private Check.TotalLine getTotalLine(Map<Product, Integer> cart) {
         return getTotalLine(cart, BigDecimal.ZERO);
     }
 
-    private static Check.TotalLine getTotalLine(Map<Product, Integer> cart, BigDecimal discountPercent) {
+    private Check.TotalLine getTotalLine(Map<Product, Integer> cart, BigDecimal discountPercent) {
         BigDecimal totalCost = BigDecimal.ZERO;
         for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
             BigDecimal productTotal = entry.getKey().getCost().multiply(BigDecimal.valueOf(entry.getValue()));
