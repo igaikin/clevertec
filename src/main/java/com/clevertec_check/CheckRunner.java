@@ -19,6 +19,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 
+import static com.clevertec_check.log4j2.LOG;
+
 public class CheckRunner {
 
     private static String IN;
@@ -61,9 +63,9 @@ public class CheckRunner {
         WRITE_FILE = Boolean.parseBoolean(properties.getProperty("write_file"));
         IN = properties.getProperty("input_file");
         OUT = properties.getProperty("output_file");
-        System.out.println("Read file - " + READ_FILE);
-        System.out.println("From - " + IN);
-        System.out.println("Write file - " + WRITE_FILE);
-        System.out.println("To - " + OUT);
+        LOG.info(String.format("Read file - %s", READ_FILE));
+        LOG.info(String.format("From - %s", IN));
+        LOG.info(String.format("Write file - %s", WRITE_FILE));
+        LOG.info(String.format("To - %s", OUT));
     }
 }

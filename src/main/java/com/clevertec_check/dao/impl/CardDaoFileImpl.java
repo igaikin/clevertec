@@ -1,12 +1,13 @@
 package com.clevertec_check.dao.impl;
 
-import com.clevertec_check.bean.Card;
 import com.clevertec_check.dao.CardDao;
+import com.clevertec_check.bean.Card;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,9 @@ public class CardDaoFileImpl implements CardDao {
 
     @Override
     public List<Card> getAll(Card card) {
-        return null;
+        List<Card> cards = new ArrayList<>();
+        cards.add(card);
+        return cards;
     }
 
     @Override
