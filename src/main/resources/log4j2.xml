@@ -4,13 +4,17 @@
     <Filter type="ThresholdFilter" level="trace"/>
     <Appenders>
         <Console name="STDOUT">
-            <Layout type="PatternLayout" pattern="%d{yyyy MMM dd HH:mm:ss} [%t] %-5level %logger{1} - %msg%n"/>
+            <Layout type="PatternLayout" pattern="%d{yyyy MMM dd HH:mm:ss} [%t] %-5level %logger{5} - %msg%n"/>
         </Console>
+        <!--
+        FILE APPENDER!
+        -->
     </Appenders>
 
     <Loggers>
         <Root level="all">
             <AppenderRef ref="STDOUT"/>
+            <!--FILE APPENDER!-->
         </Root>
     </Loggers>
 </Configuration>
