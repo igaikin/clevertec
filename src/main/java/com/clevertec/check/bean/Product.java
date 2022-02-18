@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 import java.math.BigDecimal;
 
 @Data
-@AllArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Product {
     private long id;
     private String description;
