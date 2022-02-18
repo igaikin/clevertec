@@ -20,9 +20,9 @@ public class CardDaoImpl implements CardDao {
     }
 
     @Override
-    public Card create(Card card) {
+    public Optional<Card> create(Card card) {
         CARDS.put(card.getId(), card);
-        return get(card.getId()).orElseThrow(() -> new RuntimeException("Can't create entity:" + card));
+        return Optional.ofNullable(get(card.getId()).orElseThrow(() -> new RuntimeException("Can't create entity:" + card)));
     }
 
     @Override
@@ -36,10 +36,10 @@ public class CardDaoImpl implements CardDao {
     }
 
     @Override
-    public Card update(Card card) {
+    public Optional<Card> update(Card card) {
         Card cardToUpdate = CARDS.get(card.getId());
         cardToUpdate.setDiscount(card.getDiscount());
-        return cardToUpdate;
+        return Optional.of(cardToUpdate);
     }
 
     @Override

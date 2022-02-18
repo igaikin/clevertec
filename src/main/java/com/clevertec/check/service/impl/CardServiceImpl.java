@@ -2,7 +2,6 @@ package com.clevertec.check.service.impl;
 
 import com.clevertec.check.dao.CardDao;
 import com.clevertec.check.exception.CardCreateException;
-import com.clevertec.check.exception.CardUpdateException;
 import com.clevertec.check.exception.CheckException;
 import com.clevertec.check.bean.Card;
 import com.clevertec.check.dao.impl.jdbc.CardDaoJdbcImpl;
@@ -15,7 +14,7 @@ public class CardServiceImpl implements CardService {
     private static final CardDao cardDao = new CardDaoJdbcImpl();
 
     @Override
-    public Card create(Card card) {
+    public Optional<Card> create(Card card) {
         cardDao.get(card.getId()).ifPresent(c -> {
             throw new CardCreateException("Card with id: " + card.getId() + " already exists!");
         });
@@ -33,7 +32,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Card update(Card card) {
+    public Optional<Card> update(Card card) {
         return cardDao.update(card);
     }
 

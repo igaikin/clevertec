@@ -35,7 +35,7 @@ public class ProductDaoJdbcImpl implements ProductDao {//FIXME
     }
 
     @Override
-    public Product create(Product product) {
+    public Optional<Product> create(Product product) {
         try {
             Connection connection = connectionManager.getConnection();
             PreparedStatement statement = connection.prepareStatement(CREATE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
@@ -47,7 +47,7 @@ public class ProductDaoJdbcImpl implements ProductDao {//FIXME
             ResultSet keys = statement.getGeneratedKeys();
             if (keys.next()) {
                 product.setId(keys.getLong(1));
-                return product;
+                return Optional.of(product);
             }
         } catch (SQLException e) {
             e.printStackTrace();//FIXME logger!
@@ -89,7 +89,7 @@ public class ProductDaoJdbcImpl implements ProductDao {//FIXME
     }
 
     @Override
-    public Product update(Product product) {
+    public Optional<Product> update(Product product) {
         try {
             Connection connection = connectionManager.getConnection();
             PreparedStatement statement = connection.prepareStatement(UPDATE_PRODUCT);
@@ -101,7 +101,7 @@ public class ProductDaoJdbcImpl implements ProductDao {//FIXME
         } catch (SQLException e) {
             e.printStackTrace();//FIXME logger!
         }
-        return product;
+        return Optional.ofNullable(product);
     }
 
     @Override

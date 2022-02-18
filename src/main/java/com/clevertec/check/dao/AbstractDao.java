@@ -8,9 +8,9 @@ public interface AbstractDao<T, K> {
 
     List<T> getAll();
 
-    T create(T entity);//FIXME Optional?
+    Optional<T> create(T entity);
 
-    T update(T entity);//FIXME Optional?
+    Optional<T> update(T entity);
 
     boolean delete(K id);
 }

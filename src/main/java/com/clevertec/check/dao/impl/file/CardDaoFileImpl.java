@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,7 +82,7 @@ public class CardDaoFileImpl implements CardDao {//FIXME
     }
 
     @Override
-    public Card create(Card card) {
+    public Optional<Card> create(Card card) {
         readFileIfNeed();
         //some code
         writeFile();
@@ -91,8 +90,8 @@ public class CardDaoFileImpl implements CardDao {//FIXME
     }
 
     @Override
-    public Card update(Card card) {
-        return null;
+    public Optional<Card> update(Card card) {
+        return Optional.empty();
     }
 
     @Override

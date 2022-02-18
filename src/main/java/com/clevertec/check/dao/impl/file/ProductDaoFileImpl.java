@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,13 +32,13 @@ public class ProductDaoFileImpl implements ProductDao {
     }
 
     @Override
-    public Product create(Product product) {
-        return null;
+    public Optional<Product> create(Product product) {
+        return Optional.empty();
     }
 
     @Override
     public List<Product> getAll() {
-        return null;
+        return Collections.emptyList();
     }
 
     @Override
@@ -46,8 +47,8 @@ public class ProductDaoFileImpl implements ProductDao {
     }
 
     @Override
-    public Product update(Product product) {
-        return null;
+    public Optional<Product> update(Product product) {
+        return Optional.empty();
     }
 
     @Override

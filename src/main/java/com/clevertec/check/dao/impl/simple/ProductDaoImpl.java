@@ -38,36 +38,33 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product create(Product product) {//FIXME
+    public Optional<Product> create(Product product) {
         PRODUCTS.put(product.getId(), product);
-        return product;
+        return Optional.ofNullable(get(product.getId()).orElseThrow(() -> new RuntimeException("Can't create entity:" + product)));
     }
 
     @Override
-    public List<Product> getAll() {//FIXME
-//        List<Product> products = new ArrayList<>();
-//        products.add(product);
-//        return products;
-        return null;
+    public List<Product> getAll() {
+           return new ArrayList<>(PRODUCTS.values());
     }
 
     @Override
     public Optional<Product> get(Long id) {
-        return Optional.of(PRODUCTS.get(id));
+        return Optional.ofNullable(PRODUCTS.get(id));
     }
 
     @Override
-    public Product update(Product product) {
-        Product updateProduct = PRODUCTS.get(product.getId());
-        updateProduct.setDescription(product.getDescription());
-        updateProduct.setCost(product.getCost());
-        updateProduct.setOnPromo(product.isOnPromo());
-        return updateProduct;
+    public Optional<Product> update(Product product) {
+        Product productToUpdate = PRODUCTS.get(product.getId());
+        productToUpdate.setDescription(product.getDescription());
+        productToUpdate.setCost(product.getCost());
+        productToUpdate.setOnPromo(product.isOnPromo());
+        return Optional.of(productToUpdate);
     }
 
     @Override
-    public boolean delete(Long id) {//FIXME
-        PRODUCTS.remove(id);
-        return true;
+    public boolean delete(Long id) {
+        Product deletedEntity = PRODUCTS.remove(id);
+        return deletedEntity != null;
     }
 }

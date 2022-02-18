@@ -23,7 +23,7 @@ public class CardDaoJdbcImpl implements CardDao {
     private final ConnectionManager connectionManager = ConnectionManager.getInstance();
 
     @Override
-    public Card create(Card card) {
+    public Optional<Card> create(Card card) {
         try {
             Connection connection = connectionManager.getConnection();
             PreparedStatement statement = connection.prepareStatement(CREATE_CARD, Statement.RETURN_GENERATED_KEYS);
@@ -32,7 +32,7 @@ public class CardDaoJdbcImpl implements CardDao {
             ResultSet keys = statement.getGeneratedKeys();
             if (keys.next()) {
                 card.setId(keys.getLong("id"));
-                return card;
+                return Optional.of(card);
             }
         } catch (SQLException e) {
             e.printStackTrace();//FIXME logger!
@@ -81,7 +81,7 @@ public class CardDaoJdbcImpl implements CardDao {
     }
 
     @Override
-    public Card update(Card card) {
+    public Optional<Card> update(Card card) {
         Connection connection = connectionManager.getConnection();
         try {
             connection.setAutoCommit(false);
@@ -96,7 +96,7 @@ public class CardDaoJdbcImpl implements CardDao {
         } finally {
             setAutoCommitTrue(connection);
         }
-        return get(card.getId()).orElseThrow(RuntimeException::new);//FIXME message
+        return Optional.ofNullable(get(card.getId()).orElseThrow(RuntimeException::new));//FIXME message
     }
 
     private void checkRowsUpdated(int rowsUpdated, int expectedRows) {
