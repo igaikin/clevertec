@@ -45,7 +45,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getAll() {
-           return new ArrayList<>(PRODUCTS.values());
+        return new ArrayList<>(PRODUCTS.values());
     }
 
     @Override
