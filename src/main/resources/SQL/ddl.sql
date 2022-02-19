@@ -1,7 +1,7 @@
 --DROP TABLE IF EXISTS cards;
 --DROP TABLE IF EXISTS products;
 
-CREATE DATABASE checkrunner;
+--CREATE DATABASE checkrunner;
 
 CREATE TABLE IF NOT EXISTS cards
 (
