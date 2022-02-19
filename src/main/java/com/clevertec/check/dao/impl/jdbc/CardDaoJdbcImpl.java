@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class CardDaoJdbcImpl implements CardDao {
     private static final String CARD_ALL = "SELECT id, discount FROM cards ";
-    private static final String CREATE_CARD = "INSERT INTO cards  (discount) VALUES (?)";
+    private static final String CREATE_CARD = "INSERT INTO cards (discount) VALUES (?)";
     private static final String GET_ALL = CARD_ALL + "ORDER BY id";
     private static final String GET_BY_ID = CARD_ALL + "WHERE id = ?";
     private static final String UPDATE_CARD = "UPDATE cards SET discount = ? WHERE id = ?";
@@ -26,10 +26,12 @@ public class CardDaoJdbcImpl implements CardDao {
     public Optional<Card> create(Card card) {
         try {
             Connection connection = connectionManager.getConnection();
-            PreparedStatement statement = connection.prepareStatement(CREATE_CARD, Statement.RETURN_GENERATED_KEYS);
-            statement.setBigDecimal(1, card.getDiscount());
-            statement.executeUpdate();
-            ResultSet keys = statement.getGeneratedKeys();
+            ResultSet keys;
+            try (PreparedStatement statement = connection.prepareStatement(CREATE_CARD, Statement.RETURN_GENERATED_KEYS)) {
+                statement.setBigDecimal(1, card.getDiscount());
+                statement.executeUpdate();
+                keys = statement.getGeneratedKeys();
+            }
             if (keys.next()) {
                 card.setId(keys.getLong("id"));
                 return Optional.of(card);
@@ -45,8 +47,10 @@ public class CardDaoJdbcImpl implements CardDao {
         List<Card> cards = new ArrayList<>();
         try {
             Connection connection = connectionManager.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(GET_ALL);
+            ResultSet resultSet;
+            try (Statement statement = connection.createStatement()) {
+                resultSet = statement.executeQuery(GET_ALL);
+            }
             while (resultSet.next()) {
                 cards.add(processCard(resultSet));
             }
@@ -89,43 +93,30 @@ public class CardDaoJdbcImpl implements CardDao {
             statement.setBigDecimal(1, card.getDiscount());
             statement.setLong(2, card.getId());
             int rowsUpdated = statement.executeUpdate();
-            checkRowsUpdated(rowsUpdated, 1);
+            JdbcUtil.checkRowsUpdated(rowsUpdated, 1);
             connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();//FIXME logger!
         } finally {
-            setAutoCommitTrue(connection);
+            JdbcUtil.setAutoCommitTrue(connection);
         }
         return Optional.ofNullable(get(card.getId()).orElseThrow(RuntimeException::new));//FIXME message
     }
 
-    private void checkRowsUpdated(int rowsUpdated, int expectedRows) {
-        if (rowsUpdated < expectedRows) {
-            throw new RuntimeException("Not updated");
-        } else if (rowsUpdated > expectedRows) {
-            throw new RuntimeException("...");//FIXME message
-        }
-    }
-
-    private void setAutoCommitTrue(Connection connection) {
-        try {
-            if (connection != null) {
-                connection.setAutoCommit(true);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();//FIXME logger!
-        }
-    }
-
     @Override
     public boolean delete(Long id) {
+        Connection connection = connectionManager.getConnection();
         try {
-            Connection connection = connectionManager.getConnection();
+            connection.setAutoCommit(false);
             PreparedStatement statement = connection.prepareStatement(DELETE_CARD);
             statement.setLong(1, id);
-            statement.executeUpdate();//FIXME chek rows, autocommit, return true, false
+            int rowsUpdated = statement.executeUpdate();
+            JdbcUtil.checkRowsUpdated(rowsUpdated, 1);
+            connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();//FIXME logger!
+        } finally {
+            JdbcUtil.setAutoCommitTrue(connection);
         }
         return true;
     }

@@ -17,27 +17,23 @@ public class FileUtil {
         }
     }
 
-    public static boolean writeFile(String content, String target) {
+    public static void writeFile(String content, String target) {
         try {
             Path path = Paths.get(target);
             createIfNotExists(path);
             Files.write(Paths.get(target), content.getBytes(StandardCharsets.UTF_8));
-            return true;
         } catch (IOException e) {
             e.printStackTrace();//FIXME logger!
-            return false;
         }
     }
 
-    private static boolean createIfNotExists(Path path) {
+    private static void createIfNotExists(Path path) {
         try {
             if (Files.notExists(path.getParent())) {
                 Files.createDirectory(path.getParent());
             }
-            return true;
         } catch (IOException e) {
             e.printStackTrace();//FIXME logger!
-            return false;
         }
     }
 }

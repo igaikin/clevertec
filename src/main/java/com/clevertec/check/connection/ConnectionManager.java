@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    public static final Logger LOG = LogManager.getLogger(ConnectionManager.class);
+    private static final Logger LOG = LogManager.getLogger(ConnectionManager.class);
     private static final String URL = "jdbc:postgresql://127.0.0.1:5432/checkrunner";
     private static final String USER_NAME = "postgres";
     private static final String PASSWORD = "root";
