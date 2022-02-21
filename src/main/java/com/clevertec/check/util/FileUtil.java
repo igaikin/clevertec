@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileUtil {
-    public static String[] readArguments(String path) {
+    public static String[] readOrderArguments(String path) {
         try {
             String str = new String(Files.readAllBytes(Paths.get(path)));
             return str.split(" ");
@@ -17,7 +17,7 @@ public class FileUtil {
         }
     }
 
-    public static void writeFile(String content, String target) {
+    public static void writeCheckInFile(String content, String target) {
         try {
             Path path = Paths.get(target);
             createIfNotExists(path);

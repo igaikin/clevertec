@@ -36,7 +36,7 @@ public class CheckRunner {
         try {
             init();
             if (READ_FILE) {
-                args = FileUtil.readArguments(IN);
+                args = FileUtil.readOrderArguments(IN);
             }
             ReaderUtil.validate(args);
             Map<Product, Integer> cart = cartService.getCart(ReaderUtil.getData(args));
@@ -45,7 +45,7 @@ public class CheckRunner {
                     .orElseGet(() -> checkService.createCheck(cart));
             String checkContent = FormatterUtil.getFormattedCheck(check);
             if (WRITE_FILE) {
-                FileUtil.writeFile(FormatterUtil.getFormattedCheck(check), OUT);
+                FileUtil.writeCheckInFile(FormatterUtil.getFormattedCheck(check), OUT);
             }
             System.out.println(checkContent);
         } catch (CheckException e) {
