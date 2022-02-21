@@ -14,5 +14,4 @@ public class Product {
     private String description;
     private BigDecimal cost;
     private boolean isOnPromo;
-
 }

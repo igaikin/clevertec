@@ -12,5 +12,4 @@ import java.math.BigDecimal;
 public class Card {
     private long id;
     private BigDecimal discount;
-
 }
