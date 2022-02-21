@@ -9,7 +9,7 @@ public class JdbcUtil {
         if (rowsUpdated < expectedRows) {
             throw new RuntimeException("Not updated");
         } else if (rowsUpdated > expectedRows) {
-            throw new RuntimeException("...");//FIXME message
+            throw new RuntimeException("you created a VERY big problem");//FIXME message
         }
     }
 
