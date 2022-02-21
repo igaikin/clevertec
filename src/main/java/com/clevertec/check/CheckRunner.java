@@ -1,15 +1,15 @@
 package com.clevertec.check;
 
-import com.clevertec.check.exception.CheckException;
-import com.clevertec.check.service.impl.CheckServiceImpl;
 import com.clevertec.check.bean.Check;
 import com.clevertec.check.bean.Product;
 import com.clevertec.check.connection.ConnectionManager;
+import com.clevertec.check.exception.CheckException;
 import com.clevertec.check.service.CardService;
 import com.clevertec.check.service.CartService;
 import com.clevertec.check.service.CheckService;
 import com.clevertec.check.service.impl.CardServiceImpl;
 import com.clevertec.check.service.impl.CartServiceImpl;
+import com.clevertec.check.service.impl.CheckServiceImpl;
 import com.clevertec.check.util.FileUtil;
 import com.clevertec.check.util.FormatterUtil;
 import com.clevertec.check.util.ReaderUtil;
@@ -31,6 +31,7 @@ public class CheckRunner {
     private static final CardService cardService = new CardServiceImpl();
     private static final CartService cartService = new CartServiceImpl();
     private static final CheckService checkService = new CheckServiceImpl();
+
     public static void main(String[] args) {
         try {
             init();

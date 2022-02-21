@@ -8,20 +8,20 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class CardDaoFileImpl implements CardDao {//FIXME
+public class CardDaoFileImpl implements CardDao {
     private static final Map<Long, Card> CARDS = new HashMap<>();
     private static final String SOURCE_FILE = "src/main/resources/in/cards.txt";
     private static final String SEPARATOR = ", ";
     private static final int ID_POSITION = 0;
     private static final int DISCOUNT_POSITION = 1;
     private static FileTime lastUpdateTime;
-
 
     private static void readFile() {
         try {
@@ -37,7 +37,6 @@ public class CardDaoFileImpl implements CardDao {//FIXME
         }
     }
 
-
     private static void readFileIfNeed() {
         try {
             FileTime actualTime = Files.getLastModifiedTime(Paths.get(SOURCE_FILE));
@@ -47,9 +46,7 @@ public class CardDaoFileImpl implements CardDao {//FIXME
         } catch (IOException e) {
             e.printStackTrace();//FIXME logger!
         }
-
     }
-
 
     private static List<String> getLines() {
         return CARDS.values()
@@ -67,31 +64,32 @@ public class CardDaoFileImpl implements CardDao {//FIXME
     }
 
     @Override
+    public Optional<Card> create(Card card) {
+        readFileIfNeed();
+        CARDS.put(card.getId(), card);
+        writeFile();
+        return Optional.ofNullable(get(card.getId()).orElseThrow(() -> new RuntimeException("Can't create entity:" + card)));
+    }
+
+    @Override
+    public List<Card> getAll() {
+        readFileIfNeed();
+        return new ArrayList<>(CARDS.values());
+    }
+
+    @Override
     public Optional<Card> get(Long id) {
         readFileIfNeed();
         return Optional.ofNullable(CARDS.get(id));
     }
 
     @Override
-    public List<Card> getAll() {
-        readFileIfNeed();
-//        List<Card> cards = new ArrayList<>();
-//        cards.add();
-//        return cards;
-        return null;
-    }
-
-    @Override
-    public Optional<Card> create(Card card) {
-        readFileIfNeed();
-        //some code
-        writeFile();
-        return null;
-    }
-
-    @Override
     public Optional<Card> update(Card card) {
-        return Optional.empty();
+        readFileIfNeed();
+        Card cardToUpdate = CARDS.get(card.getId());
+        cardToUpdate.setDiscount(card.getDiscount());
+        writeFile();
+        return Optional.of(cardToUpdate);
     }
 
     @Override

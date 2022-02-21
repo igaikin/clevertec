@@ -1,17 +1,17 @@
 package com.clevertec.check.service.impl;
 
+import com.clevertec.check.bean.Card;
 import com.clevertec.check.dao.CardDao;
+import com.clevertec.check.dao.impl.file.CardDaoFileImpl;
 import com.clevertec.check.exception.CardCreateException;
 import com.clevertec.check.exception.CheckException;
-import com.clevertec.check.bean.Card;
-import com.clevertec.check.dao.impl.jdbc.CardDaoJdbcImpl;
 import com.clevertec.check.service.CardService;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CardServiceImpl implements CardService {
-    private static final CardDao cardDao = new CardDaoJdbcImpl();
+    private static final CardDao cardDao = new CardDaoFileImpl();
 
     @Override
     public Optional<Card> create(Card card) {
