@@ -12,6 +12,8 @@ src/main/resources/out/*
 /.idea/*
 /target/*
 /logs
+/build
+/.gradle
 *.log
 *.gz
 *.jar
